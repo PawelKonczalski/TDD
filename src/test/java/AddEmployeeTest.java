@@ -16,13 +16,12 @@ class AddEmployeeTest {
 		//given
 		EmployeeDB employeeDB = new EmployeeDB();
 		Employee wojtek = new Employee("Wojtek");
-
 		//when
 		employeeDB.add(wojtek);
-
 		//then
 		Iterable<Employee> allEmployees = employeeDB.findAll();
-		assertThat(allEmployees).containsOnly(wojtek);
+		assertThat(allEmployees).hasSize(1);
+		assertThat(allEmployees.iterator().next().getName()).isEqualTo("Wojtek");
 
 	}
 }

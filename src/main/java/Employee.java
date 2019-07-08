@@ -1,33 +1,48 @@
 import java.util.Objects;
 
 class Employee {
-	private String name;
+    private long id;
+    private String name;
+    private Task task;
 
-	 Employee(String name) {
+    Employee(String name) {
+        this.name = name;
+    }
 
+    Employee(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
-		this.name = name;
-	}
+    String getName() {
+        return name;
+    }
 
-	String getName() {
-		return name;
-	}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Employee employee = (Employee) o;
+        return id == employee.id;
+    }
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
-		Employee employee = (Employee) o;
-		return Objects.equals(name, employee.name);
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(name);
-	}
+    long getId() {
+        return id;
+    }
+
+    void setTask(Task task) {
+        this.task = task;
+    }
+
+    Task getTask() {
+        return task;
+    }
 
 }

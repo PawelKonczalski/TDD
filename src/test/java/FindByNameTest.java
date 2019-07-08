@@ -21,14 +21,11 @@ class FindByNameTest {
 		employeeDB.add(employee1);
 		employeeDB.add(employee2);
 		employeeDB.add(employee3);
-
 		//when
-
 		Iterable<Employee> returned = employeeDB.find("Karolina");
-
-
 		//then
-		assertThat(returned).containsOnly(employee1);
+		assertThat(returned).hasSize(1);
+		assertThat(returned.iterator().next().getName()).isEqualTo("Karolina");
 	}
 
 }
