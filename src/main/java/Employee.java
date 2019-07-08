@@ -1,6 +1,6 @@
 import java.util.Objects;
 
-public class Employee {
+class Employee {
 	private String name;
 
 	 Employee(String name) {
