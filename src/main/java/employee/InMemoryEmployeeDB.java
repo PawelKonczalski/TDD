@@ -1,13 +1,15 @@
+package employee;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-class InMemoryEmployeeDB implements EmployeeDB {
+public class InMemoryEmployeeDB implements EmployeeDB {
 
     private List<Employee> employeeList;
 
-    InMemoryEmployeeDB() {
+    public InMemoryEmployeeDB() {
         employeeList = new ArrayList<>();
     }
 

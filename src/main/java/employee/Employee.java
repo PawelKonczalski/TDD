@@ -1,11 +1,15 @@
+package employee;
+
+import task.Task;
+
 import java.util.Objects;
 
-class Employee {
+public class Employee {
     private long id;
     private String name;
     private Task task;
 
-    Employee(String name) {
+    public Employee(String name) {
         this.name = name;
     }
 
@@ -37,11 +41,11 @@ class Employee {
         return id;
     }
 
-    void setTask(Task task) {
+    public void setTask(Task task) {
         this.task = task;
     }
 
-    Task getTask() {
+    public Task getTask() {
         return task;
     }
 

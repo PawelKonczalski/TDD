@@ -1,12 +1,14 @@
+package task;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
-class InMemoryTaskDB implements TaskDB {
+public class InMemoryTaskDB implements TaskDB {
 
     private Collection<Task> tasks;
 
-    InMemoryTaskDB() {
+    public InMemoryTaskDB() {
         tasks = new ArrayList<>();
     }
 

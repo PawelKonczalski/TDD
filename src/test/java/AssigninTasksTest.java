@@ -1,5 +1,12 @@
+import DbUtils.DbTestUtils;
+import employee.Employee;
+import employee.EmployeeAlreadyBusyException;
+import employee.EmployeeDB;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import task.Task;
+import task.TaskAlreadyAssignedException;
+import task.TaskDB;
 
 import java.util.Optional;
 
@@ -18,7 +25,7 @@ class AssigninTasksTest {
     void addTaskToEmployee() {
         //given
         EmployeeDB employeeDB = DbTestUtils.emptyInMemoryEmployeeDB();
-        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDB();
+        TaskDB taskDB = DbTestUtils.emptyInMemoryTaskDB();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         // add employee Andrzej...
         Employee employee = new Employee("Andrzej");
@@ -45,7 +52,7 @@ class AssigninTasksTest {
     void assignBusyTaskToAnotherEmployeeFail() {
         //given
         EmployeeDB employeeDB = DbTestUtils.emptyInMemoryEmployeeDB();
-        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDB();
+        TaskDB taskDB = DbTestUtils.emptyInMemoryTaskDB();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         Task task = new Task("fixing bug");
         // add employee Andrzej...
@@ -75,7 +82,7 @@ class AssigninTasksTest {
     void assignTaskToEmployeeWithTaskShouldFail() {
         //given
         EmployeeDB employeeDB = DbTestUtils.emptyInMemoryEmployeeDB();
-        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDB();
+        TaskDB taskDB = DbTestUtils.emptyInMemoryTaskDB();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         Task firstTask = new Task("fixing bug");
         Task secondTask = new Task("it depends");

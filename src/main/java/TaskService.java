@@ -1,3 +1,10 @@
+import employee.Employee;
+import employee.EmployeeAlreadyBusyException;
+import employee.EmployeeDB;
+import task.Task;
+import task.TaskAlreadyAssignedException;
+import task.TaskDB;
+
 import java.util.Optional;
 
 class TaskService {
@@ -20,9 +27,9 @@ class TaskService {
                         employeeFromDb.setTask(taskFromDb);
                         taskFromDb.setEmployee(employeeFromDb);
                     } else
-                        throw new TaskAlreadyAssignedException("Task already assigned to " + taskFromDb.getEmployee());
+                        throw new TaskAlreadyAssignedException("task.Task already assigned to " + taskFromDb.getEmployee());
                 });
-            } else throw new EmployeeAlreadyBusyException("Employee is already busy" + employeeFromDb.getTask());
+            } else throw new EmployeeAlreadyBusyException("employee.Employee is already busy" + employeeFromDb.getTask());
         });
     }
 

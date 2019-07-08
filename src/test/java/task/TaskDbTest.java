@@ -1,5 +1,10 @@
+package task;
+
+import DbUtils.DbTestUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import task.Task;
+import task.TaskDB;
 
 import java.util.Optional;
 
@@ -23,7 +28,7 @@ class TaskDbTest {
     }
 
     private TaskDB emptyTaskDb() {
-        return DbTestUtils.emptyInMemmoryTaskDB();
+        return DbTestUtils.emptyInMemoryTaskDB();
     }
 
     // @formatter:off

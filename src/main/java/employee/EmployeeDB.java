@@ -1,6 +1,8 @@
+package employee;
+
 import java.util.Optional;
 
-interface EmployeeDB {
+public interface EmployeeDB {
 
     /**
      * Adds a new employee.
