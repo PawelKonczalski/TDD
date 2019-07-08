@@ -21,6 +21,17 @@ public class Task {
         this.title = title;
     }
 
+    String asLine(){
+        return id + "," + title + "," + extractEmployeeId();
+    }
+
+    private Long extractEmployeeId() {
+        if (employee != null){
+            return employee.getId();
+        }
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
