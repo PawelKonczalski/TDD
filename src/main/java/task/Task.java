@@ -38,7 +38,7 @@ public class Task {
         return Objects.hash(id);
     }
 
-    long getId() {
+    public long getId() {
         return id;
     }
 

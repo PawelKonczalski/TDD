@@ -22,6 +22,16 @@ public class Employee {
         return name;
     }
 
+    String asLine() {
+        return id + "," + name + "," + extractTaskId();
+    }
+
+    private Long extractTaskId() {
+        if(task != null)
+            return task.getId();
+        return null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o)
@@ -48,5 +58,4 @@ public class Employee {
     public Task getTask() {
         return task;
     }
-
 }
