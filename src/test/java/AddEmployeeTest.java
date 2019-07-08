@@ -14,7 +14,7 @@ class AddEmployeeTest {
 	@Test
 	void add() {
 		//given
-		EmployeeDB employeeDB = new EmployeeDB();
+		EmployeeDB employeeDB = DbTestUtils.emptyInMemoryEmployeeDB();
 		Employee wojtek = new Employee("Wojtek");
 		//when
 		employeeDB.add(wojtek);

@@ -17,8 +17,8 @@ class AssigninTasksTest {
     @Test
     void addTaskToEmployee() {
         //given
-        EmployeeDB employeeDB = new EmployeeDB();
-        TaskDB taskDB = new TaskDB();
+        EmployeeDB employeeDB = DbTestUtils.emptyInMemoryEmployeeDB();
+        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDB();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         // add employee Andrzej...
         Employee employee = new Employee("Andrzej");
@@ -44,8 +44,8 @@ class AssigninTasksTest {
     @Test
     void assignBusyTaskToAnotherEmployeeFail() {
         //given
-        EmployeeDB employeeDB = new EmployeeDB();
-        TaskDB taskDB = new TaskDB();
+        EmployeeDB employeeDB = DbTestUtils.emptyInMemoryEmployeeDB();
+        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDB();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         Task task = new Task("fixing bug");
         // add employee Andrzej...
@@ -63,6 +63,7 @@ class AssigninTasksTest {
         assertThat(exception).isNotNull();
         assertThat(taskService.getEmployeeTask(employeeWithoutTaskId)).isEmpty();
     }
+
     // @formatter:off
     @DisplayName(
             "given employee with task" +
@@ -73,8 +74,8 @@ class AssigninTasksTest {
     @Test
     void assignTaskToEmployeeWithTaskShouldFail() {
         //given
-        EmployeeDB employeeDB = new EmployeeDB();
-        TaskDB taskDB = new TaskDB();
+        EmployeeDB employeeDB = DbTestUtils.emptyInMemoryEmployeeDB();
+        TaskDB taskDB = DbTestUtils.emptyInMemmoryTaskDB();
         TaskService taskService = new TaskService(employeeDB, taskDB);
         Task firstTask = new Task("fixing bug");
         Task secondTask = new Task("it depends");
@@ -90,6 +91,6 @@ class AssigninTasksTest {
         //then
         assertThat(exception).isNotNull();
         //noinspection OptionalGetWithoutIsPresent
-assertThat(taskService.getEmployeeTask(employeeId).get().getTitle()).isEqualTo("fixing bug");
+        assertThat(taskService.getEmployeeTask(employeeId).get().getTitle()).isEqualTo("fixing bug");
     }
 }

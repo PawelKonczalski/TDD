@@ -11,7 +11,7 @@ class TaskDbTest {
     @Test
     void generateId() {
         // given
-        TaskDB taskDB = new TaskDB();
+        TaskDB taskDB = emptyTaskDb();
 
         // when
         long task1Id = taskDB.add(new Task());
@@ -20,6 +20,10 @@ class TaskDbTest {
 
         // then
         assertThat(task1Id).isNotEqualTo(task2Id).isNotEqualTo(task3Id);
+    }
+
+    private TaskDB emptyTaskDb() {
+        return DbTestUtils.emptyInMemmoryTaskDB();
     }
 
     // @formatter:off
@@ -31,7 +35,7 @@ class TaskDbTest {
     @Test
     void add() {
         //given
-        TaskDB taskDB = new TaskDB();
+        TaskDB taskDB = emptyTaskDb();
         Task task = new Task("title");
         //when
         taskDB.add(task);
@@ -50,7 +54,7 @@ class TaskDbTest {
     @Test
     void findById() {
         //given
-        TaskDB taskDB = new TaskDB();
+        TaskDB taskDB = emptyTaskDb();
         Task task1 = new Task("task1 title");
         taskDB.add(task1);
         Task task2 = new Task("task2 title");

@@ -1,38 +1,19 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-class EmployeeDB {
+interface EmployeeDB {
 
-    private List<Employee> employeeList;
+    /**
+     * Adds a new employee.
+     *
+     * @param employee an employee to add
+     * @return the generated id
+     */
+    long add(Employee employee);
 
-    EmployeeDB() {
-        employeeList = new ArrayList<>();
-    }
+    Iterable<Employee> findAll();
 
-    long add(Employee employee) {
-        long id = generateId();
-        Employee employeeCopy = new Employee(id, employee.getName());
-        employeeList.add(employeeCopy);
-        return id;
-    }
+    Iterable<Employee> findAllByName(String name);
 
-    Iterable<Employee> findAll() {
-        return employeeList;
-    }
+    Optional<Employee> findById(long id);
 
-    Iterable<Employee> find(String name) {
-        return employeeList.stream()
-                .filter(employee -> employee.getName().equals(name))
-                .collect(Collectors.toList());
-    }
-
-    private long generateId() {
-        return employeeList.size() + 1;
-    }
-
-    Optional<Employee> findById(long employeeId) {
-        return employeeList.stream().filter(employee -> employee.getId() == employeeId).findAny();
-    }
 }
